@@ -14,4 +14,5 @@ new Vue({
     },
     template:'<App/>'
 })
-console.log("111");
+const arr = [1,2,3].map(item => item+1)
+console.log(arr);

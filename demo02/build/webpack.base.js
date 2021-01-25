@@ -25,6 +25,15 @@ module.exports = {
         rules:[{
             test:/\.vue$/,
             loader: 'vue-loader'
+        },{
+            test: /\.m?js$/,
+            exclude: /node_modules/,
+            use: {
+              loader: "babel-loader",
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
         },
         {
             test:/\.(jpg|jpeg|png|svg)$/,

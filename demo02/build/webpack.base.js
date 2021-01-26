@@ -14,40 +14,40 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 module.exports = {
     // 项目打包入口
-    entry:'./src/main.js',
+    entry: './src/main.js',
     // 项目打包出口
-    output:{
-        filename:'bundle.js',
-        path:path.resolve(__dirname, '../dist')
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, '../dist')
     },
     // 打包规则
-    module:{
-        rules:[{
-            test:/\.vue$/,
+    module: {
+        rules: [{
+            test: /\.vue$/,
             loader: 'vue-loader'
-        },{
+        }, {
             test: /\.m?js$/,
             exclude: /node_modules/,
             use: {
-              loader: "babel-loader",
-              options: {
-                presets: ['@babel/preset-env']
-              }
+                loader: "babel-loader",
+                options: {
+                    presets: ['@babel/preset-env']
+                }
             }
         },
         {
-            test:/\.(jpg|jpeg|png|svg)$/,
-            loader:'url-loader',
-            options:{
-                name:'[name].[ext]',
-                limit:2048
+            test: /\.(jpg|jpeg|png|svg)$/,
+            loader: 'url-loader',
+            options: {
+                name: '[name].[ext]',
+                limit: 2048
             }
-        },{
-            test:/\.css$/,
-            use:['style-loader','css-loader']
-        },{
-            test:/\.styl(us)?$/,
-            use:[
+        }, {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
+        }, {
+            test: /\.styl(us)?$/,
+            use: [
                 'style-loader',
                 'css-loader',
                 'postcss-loader',
@@ -56,16 +56,18 @@ module.exports = {
         }]
     },
     // 插件
-    plugins:[
+    plugins: [
         new VueLoaderPlugin(),
         new HtmlWebpackPlugin({
             template: './index.html'
         }),
         new CleanWebpackPlugin(),
     ],
-    resolve:{
-        alias:{
-            'vue': 'vue/dist/vue.js'
+    resolve: {
+        alias: {
+            'vue': 'vue/dist/vue.js',
+            '@': path.resolve(__dirname, '../src'),
+            'styles': path.resolve(__dirname, '../src/assets/styles')
         }
     }
 }

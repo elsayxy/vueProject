@@ -7,12 +7,10 @@ import App from './App.vue'
 // 创建vue根实例
 new Vue({
     // 挂载APP组件
-    el:"#app",
-    components:{
+    el: "#app",
+    components: {
         // 组件名：组件对象
-        App:App
+        App: App
     },
-    template:'<App/>'
+    template: '<App/>'
 })
-const arr = [1,2,3].map(item => item+1)
-console.log(arr);
